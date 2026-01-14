@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Classical Chess</title>
+
+  <!-- Chessboard.js CSS (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Classical Chess</h1>
+      <div class="status">
+        <span id="turn">White to move</span>
+        <span id="state">Ready</span>
+        <span id="fen" class="fen"></span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="board-wrap">
+        <div class="coords top">
+          <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span>
+        </div>
+        <div class="board-frame">
+          <div id="board" class="board"></div>
+          <div id="overlay" class="overlay"></div>
+        </div>
+        <div class="coords bottom">
+          <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span>
+        </div>
+        <div class="ranks left">
+          <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+        </div>
+        <div class="ranks right">
+          <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <div class="controls">
+          <button id="newGame">New game</button>
+          <button id="undo">Undo</button>
+          <button id="redo">Redo</button>
+          <button id="flip">Flip board</button>
+          <button id="exportPGN">Export PGN</button>
+        </div>
+
+        <div class="moves">
+          <h3>Move list</h3>
+          <ol id="moveList"></ol>
+        </div>
+
+        <div class="info">
+          <h3>Game status</h3>
+          <ul>
+            <li><strong>Check:</strong> <span id="checkFlag">No</span></li>
+            <li><strong>Checkmate:</strong> <span id="mateFlag">No</span></li>
+            <li><strong>Draw:</strong> <span id="drawFlag">No</span></li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <small>Staunton pieces • chess.js + chessboard.js • Classical wood theme</small>
+    </footer>
+  </div>
+
+  <!-- Promotion modal -->
+  <div id="promotionModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Choose promotion</h3>
+      <div class="promo-choices">
+        <button data-piece="q">Queen</button>
+        <button data-piece="r">Rook</button>
+        <button data-piece="b">Bishop</button>
+        <button data-piece="n">Knight</button>
+      </div>
+      <button id="cancelPromotion" class="cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Dependencies -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
